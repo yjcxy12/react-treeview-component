@@ -1,0 +1,12 @@
+{
+  "name": "react-tree",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "author": "yjcxy12",
+  "license": "MIT",
+  "dependencies": {
+    "bower": "^1.4.1",
+    "react-tools": "^0.13.3"
+  }
+}
