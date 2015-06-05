@@ -1,18 +1,36 @@
-var TreeView = require('../react-tree.js')();
 var dataSource = [{
   'id': '1',
   'text': 'myNode',
   'icon': 'glyphicon glyphicon-folder-open',
-    'opened': false,
-    'disabled': false,
-    'selected': false,
+  'opened': false,
+  'disabled': false,
+  'selected': false,
   'children': [{
       'id': '3',
       'text': 'myNode3',
+      'icon': 'glyphicon glyphicon-folder-open',
+      'opened': false,
+      'disabled': false,
+      'selected': false,
+      'children': [
+        {
+          'id': '5',
+          'text': 'myNode5',
+          'icon': 'glyphicon glyphicon-leaf',
+          'opened': false,
+          'disabled': false,
+          'selected': false,
+          'children': []
+        }
+      ]
+    },
+    {
+      'id': '4',
+      'text': 'myNode4',
       'icon': 'glyphicon glyphicon-leaf',
-        'opened': false,
-        'disabled': false,
-        'selected': false,
+      'opened': false,
+      'disabled': false,
+      'selected': false,
       'children': []
     }
   ]
@@ -21,9 +39,9 @@ var dataSource = [{
   'id': '2',
   'text': 'myNode2',
   'icon': 'glyphicon glyphicon-folder-open',
-    'opened': false,
-    'disabled': false,
-    'selected': false,
+  'opened': false,
+  'disabled': false,
+  'selected': false,
   'children': []
 }];
 
@@ -34,12 +52,20 @@ var Sample = React.createClass({
       };
   },
   handleTreenodeClick: function (node_id) {
-    this.state.dataSource.map(function (data) {
-      if (data.id !== node_id) {
-        return;
+    var data = {
+      id: '#',
+      children: this.props.dataSource
+    };
+    iter(data);
+    function iter(node) {
+      for (var i = 0, arrlen = node.children.length; i < arrlen; i++) {
+        var child = node.children[i];
+        iter(child);
       }
-      data.text += ' clicked';
-    });
+      if (node_id === node.id) {
+        node.text += ' click';
+      }
+    }
 
     this.setState(this.state.dataSource);
   },
@@ -47,7 +73,10 @@ var Sample = React.createClass({
   render: function() {
     var that = this;
     return (
-      <TreeView dataSource={this.props.dataSource} onTreenodeClick={this.handleTreenodeClick}></TreeView>
+      <Treeview dataSource={this.props.dataSource} 
+        onTreenodeClick={this.handleTreenodeClick}
+        ref='treeview'>
+      </Treeview>
     );
   }
 });

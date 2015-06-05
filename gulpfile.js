@@ -1,16 +1,16 @@
 var gulp = require('gulp'),
+	concat = require('gulp-concat'),
 	browserify = require('browserify'),
 	source = require('vinyl-source-stream'),
-	reactify = require('reactify'),
-	react = require('gulp-react');
+	react = require('gulp-react'),
+	watchify = require('watchify');
 
-
-gulp.task('browserify', ['jsx'], function(){
-	return browserify('./src/example/index.js')
-		.bundle()
-		.pipe(source('bundle.js'))
-		.pipe(gulp.dest('./build'));
-});
+var files = [
+	'./src/Tree/intro.js',
+	'./src/Tree/Treenode.js',
+	'./src/Tree/Treeview.js',
+	'./src/Tree/outro.js'
+];
  
 gulp.task('jsx', function () {
     return gulp.src('./src/**/*.jsx')
@@ -18,4 +18,8 @@ gulp.task('jsx', function () {
         .pipe(gulp.dest('./src/'));
 });
 
-gulp.task('default', ['browserify']);
+gulp.task('concat', ['jsx'], function () {
+	var intro = gulp.src(files)
+	.pipe(concat('react-tree.js'));
+	return intro.pipe(gulp.dest('./build/'));
+});
