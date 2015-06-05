@@ -1,9 +1,6 @@
 var gulp = require('gulp'),
 	concat = require('gulp-concat'),
-	browserify = require('browserify'),
-	source = require('vinyl-source-stream'),
-	react = require('gulp-react'),
-	watchify = require('watchify');
+	react = require('gulp-react');
 
 var files = [
 	'./src/Tree/intro.js',
