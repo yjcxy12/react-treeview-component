@@ -1,0 +1,39 @@
+.arrow {
+  cursor: pointer;
+  margin-right: 6px;
+  display: inline-block;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+.treenode {
+  margin-left: 24px;
+}
+
+/* rotate the triangle to close it */
+.node-closed > .arrow {
+  -webkit-transform: rotate(-90deg);
+  -moz-transform: rotate(-90deg);
+  -ms-transform: rotate(-90deg);
+  transform: rotate(-90deg);
+}
+
+.node-closed > .treenode  {
+  display: none;
+}
+
+.node-icon {
+  display: inline-block;
+  text-decoration: none;
+  margin: 0;
+  padding-right: 10px;
+  vertical-align: top;
+  text-align: center;
+}
+
+.node-text {
+  cursor: pointer;
+  display: inline-block;
+}
