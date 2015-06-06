@@ -1,16 +1,21 @@
 {
-  "name": "react-tree",
-  "version": "0.0.1",
+  "name": "react-treeview-component",
+  "version": "0.1.0",
   "description": "React Tree Component",
   "main": "./build/react-tree.js",
   "author": {
     "name": "yjcxy12",
     "email": "yjcxy12@gmail.com"
   },
+  "keywords": [
+    "react",
+    "treeview",
+    "tree",
+    "view",
+    "treenode",
+    "react-component"
+  ],
   "license": "MIT",
-  "dependencies": {
-    "bower": "^1.4.1"
-  },
   "devDependencies": {
     "gulp": "^3.9.0",
     "gulp-concat": "^2.5.2",
@@ -18,6 +23,6 @@
   },
   "repository": {
     "type": "git",
-    "url": "git://github.com/yjcxy12/react-tree.git"
+    "url": "git://github.com/yjcxy12/react-treeview-component.git"
   }
 }
