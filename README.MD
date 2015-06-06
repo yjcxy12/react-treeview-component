@@ -10,7 +10,7 @@ Tree component for react
 npm install react-treeview-component
 ```
 
-Include js file at "react-treeview-component/build/react-tree.js"
+Include js file at "react-treeview-component/build/react-tree.js" <br/>
 Include css file at "react-treeview-component/build/react-tree.css"
 
 ## Usage
@@ -40,6 +40,11 @@ Two properties: dataSouce, onTreenodeClick
 ```
 
 #### onTreenodeClick
+
+######function (id, event)
+
+- id: node id
+- event: mouse clicked event
 
 ## License
 
