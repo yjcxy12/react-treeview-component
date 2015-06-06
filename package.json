@@ -1,6 +1,6 @@
 {
   "name": "react-treeview-component",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "React Tree Component",
   "main": "./build/react-tree.js",
   "author": {
@@ -24,5 +24,6 @@
   "repository": {
     "type": "git",
     "url": "git://github.com/yjcxy12/react-treeview-component.git"
-  }
+  },
+  "scripts": {}
 }
