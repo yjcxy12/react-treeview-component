@@ -31,11 +31,15 @@ var Treenode = React.createClass({displayName: "Treenode",
 
   render: function() {
     var className = 'treenode';
+    var nodeTextClass = 'node-text';
     if (this.props.data.opened) {
       className += ' node-opened';
     }
     else {
       className += ' node-closed';
+    }
+    if (this.props.data.selected) {
+      nodeTextClass += ' node-selected';
     }
 
     return (
@@ -50,7 +54,7 @@ var Treenode = React.createClass({displayName: "Treenode",
         React.createElement("i", {className: 'node-icon ' + this.props.data.icon}
         ), 
         React.createElement("div", {
-          className: "node-text", 
+          className: nodeTextClass, 
           onClick: this.textClicked.bind(this, this.props.data.id)}, 
           this.state.data.text
         ), 

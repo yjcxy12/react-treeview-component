@@ -43,35 +43,35 @@ var dataSource = [{
 var Sample = React.createClass({
 
   handleTreenodeClick: function (node_id, event) {
-    var data = {
-      id: '#',
-      children: this.props.dataSource
-    };
-
-    iter(data, event.ctrlKey);
-    
-    this.forceUpdate();
-
-    function iter(node, ctrl) {
-      node.children.map(function (child) {
-        iter(child, ctrl);
-      });
-      if (node_id === node.id) {
+    this.refs.treeview.dfs(function (node) {
+      if (node.id === node_id) {
         node.selected = !node.selected;
       }
       else {
-        if (!ctrl) {
+        if (!event.ctrlKey) {
           node.selected = false;
         }
       }
-    }
+    });
+
+    this.forceUpdate();
+  },
+
+  handleButtonClick: function () {
+    this.refs.treeview.bfs(function (node) {
+      if (node.selected) {
+        node.text += ' changed';
+      }
+    });
+
+    this.forceUpdate();
   },
 
   render: function() {
     var that = this;
     return (
       <div>
-        <button className="btn btn-default">Change Name</button>
+        <button className="btn btn-default" onClick={this.handleButtonClick}>Change Name</button>
         <Treeview dataSource={this.props.dataSource}
           onTreenodeClick={this.handleTreenodeClick}
           ref='treeview'>

@@ -3,10 +3,42 @@ var Treeview = React.createClass({displayName: "Treeview",
     'dataSource': React.PropTypes.array
   },
 
-  getNode: function (id) {
-    return this.props.dataSource.filter(function (node) {
-      return id === node.id;
-    });
+  dfs: function (callback) {
+    var data = {
+      id: '#',
+      children: this.props.dataSource
+    };
+
+    helper(data);
+
+    function helper(node) {
+      var res = false;
+      node.children.map(function (child) {
+        helper(child);
+      });
+      callback(node);
+    }
+  },
+
+  bfs: function (callback) {
+    var data = {
+      id: '#',
+      children: this.props.dataSource
+    };
+
+    helper(data);
+
+    function helper(node) {
+      var queue = [];
+      var next = node;
+      while (next) {
+        callback(next);
+        next.children.map(function (child) {
+          queue.push(child);
+        });
+        next = queue.shift();
+      }
+    }
   },
 
   render: function () {

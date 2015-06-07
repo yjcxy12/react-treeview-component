@@ -24,7 +24,7 @@ Added to your react component
 
 ## API
 
-Two properties: dataSouce, onTreenodeClick
+## Properties
 
 #### dataSouce
 
@@ -45,6 +45,26 @@ Two properties: dataSouce, onTreenodeClick
 
 - id: node id
 - event: mouse clicked event
+
+perform function on treenode clicked
+
+## Methods (Use though 'ref' property)
+
+#### dfs
+
+######function (callback)
+
+- callback: 1 parameter: node
+
+perform depth first search on dataSource, applying callback  on each node
+
+#### bfs
+
+######function (callback)
+
+- callback: 1 parameter: node
+
+perform breadth first search on dataSource, applying callback  on each node
 
 ## License
 
