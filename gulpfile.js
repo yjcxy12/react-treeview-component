@@ -1,6 +1,9 @@
 var gulp = require('gulp'),
 	concat = require('gulp-concat'),
-	react = require('gulp-react');
+	react = require('gulp-react')
+	uglify = require('gulp-uglify')
+	minifyCss = require('gulp-minify-css')
+	rename = require('gulp-rename');
 
 var files = [
 	'./src/Tree/intro.js',
@@ -20,3 +23,14 @@ gulp.task('concat', ['jsx'], function () {
 	.pipe(concat('react-tree.js'));
 	return intro.pipe(gulp.dest('./build/'));
 });
+
+gulp.task('minify', ['concat'], function () {
+	gulp.src('./build/*.css')
+		.pipe(minifyCss())
+		.pipe(rename({extname: '.min.css'}))
+		.pipe(gulp.dest('./build/'));
+	gulp.src('./build/*.js')
+		.pipe(uglify())
+		.pipe(rename({extname: '.min.js'}))
+		.pipe(gulp.dest('./build/'));
+})
