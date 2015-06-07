@@ -8,8 +8,17 @@
   user-select: none;
 }
 
+.treeview > .treenode{
+  margin: 0px;
+}
+
 .treenode {
   margin-left: 24px;
+}
+
+.node-text:hover {
+  background-color: #e8eff7;
+  box-shadow: 0 0 2px #0a6aa1;
 }
 
 /* rotate the triangle to close it */
@@ -24,13 +33,15 @@
   display: none;
 }
 
+.node-selected {
+  background-color: #e8efff;
+  box-shadow: 0 0 2px #0a6aa1;
+}
+
 .node-icon {
   display: inline-block;
-  text-decoration: none;
   margin: 0;
   padding-right: 10px;
-  vertical-align: top;
-  text-align: center;
 }
 
 .node-text {

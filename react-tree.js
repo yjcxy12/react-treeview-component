@@ -43,11 +43,15 @@ var Treenode = React.createClass({displayName: "Treenode",
 
   render: function() {
     var className = 'treenode';
+    var nodeTextClass = 'node-text';
     if (this.props.data.opened) {
       className += ' node-opened';
     }
     else {
       className += ' node-closed';
+    }
+    if (this.props.data.selected) {
+      nodeTextClass += ' node-selected';
     }
 
     return (
@@ -62,7 +66,7 @@ var Treenode = React.createClass({displayName: "Treenode",
         React.createElement("i", {className: 'node-icon ' + this.props.data.icon}
         ), 
         React.createElement("div", {
-          className: "node-text", 
+          className: nodeTextClass, 
           onClick: this.textClicked.bind(this, this.props.data.id)}, 
           this.state.data.text
         ), 
@@ -76,10 +80,42 @@ var Treeview = React.createClass({displayName: "Treeview",
     'dataSource': React.PropTypes.array
   },
 
-  getNode: function (id) {
-    return this.props.dataSource.filter(function (node) {
-      return id === node.id;
-    });
+  dfs: function (callback) {
+    var data = {
+      id: '#',
+      children: this.props.dataSource
+    };
+
+    helper(data);
+
+    function helper(node) {
+      var res = false;
+      node.children.map(function (child) {
+        helper(child);
+      });
+      callback(node);
+    }
+  },
+
+  bfs: function (callback) {
+    var data = {
+      id: '#',
+      children: this.props.dataSource
+    };
+
+    helper(data);
+
+    function helper(node) {
+      var queue = [];
+      var next = node;
+      while (next) {
+        callback(next);
+        next.children.map(function (child) {
+          queue.push(child);
+        });
+        next = queue.shift();
+      }
+    }
   },
 
   render: function () {
