@@ -1,8 +1,8 @@
 var gulp = require('gulp'),
 	concat = require('gulp-concat'),
-	react = require('gulp-react')
-	uglify = require('gulp-uglify')
-	minifyCss = require('gulp-minify-css')
+	react = require('gulp-react'),
+	uglify = require('gulp-uglify'),
+	minifyCss = require('gulp-minify-css'),
 	rename = require('gulp-rename');
 
 var files = [
@@ -11,19 +11,28 @@ var files = [
 	'./src/Tree/Treeview.js',
 	'./src/Tree/outro.js'
 ];
- 
+
+/**
+ * Precompile jsx
+ */
 gulp.task('jsx', function () {
     return gulp.src('./src/**/*.jsx')
         .pipe(react())
         .pipe(gulp.dest('./src/'));
 });
 
+/**
+ * Concatnate js files
+ */
 gulp.task('concat', ['jsx'], function () {
 	var intro = gulp.src(files)
 	.pipe(concat('react-tree.js'));
 	return intro.pipe(gulp.dest('./build/'));
 });
 
+/**
+ * minify concatnated files
+ */
 gulp.task('minify', ['concat'], function () {
 	gulp.src('./build/*.css')
 		.pipe(minifyCss())
@@ -33,4 +42,4 @@ gulp.task('minify', ['concat'], function () {
 		.pipe(uglify())
 		.pipe(rename({extname: '.min.js'}))
 		.pipe(gulp.dest('./build/'));
-})
+});

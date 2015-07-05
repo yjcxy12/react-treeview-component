@@ -1,8 +1,16 @@
+/**
+ * Treeview component: Container to hold treenodes. Providing two ways to traverse throught the tree - 
+ *                     dfs and bfs
+ */
 var Treeview = React.createClass({
   propTypes: {
     'dataSource': React.PropTypes.array
   },
 
+  /**
+   * Perform depth first search on the tree. Call callback function on each node
+   * @param  {Function} Callback function with each node as parameter 
+   */
   dfs: function (callback) {
     var data = {
       id: '#',
@@ -20,6 +28,10 @@ var Treeview = React.createClass({
     }
   },
 
+  /**
+   * Perform breadth first search on the tree. Call callback function on each node
+   * @param  {Function} Callback function with each node as parameter 
+   */
   bfs: function (callback) {
     var data = {
       id: '#',
@@ -43,14 +55,14 @@ var Treeview = React.createClass({
 
   render: function () {
     var className = '';
-    var that = this;
+    var self = this;
     return (
       <div>
         {this.props.dataSource.map(function (data, i) {
           return (
-            <Treenode data={data} className={className} onTreenodeClick={that.props.onTreenodeClick}>
+            <Treenode data={data} className={className} onTreenodeClick={self.props.onTreenodeClick}>
               {data.children.map(function (node, i) {
-                  return iter(node, that.props.onTreenodeClick);
+                  return iter(node, self.props.onTreenodeClick);
               })}
             </Treenode>
           );
@@ -60,6 +72,9 @@ var Treeview = React.createClass({
   }
 });
 
+/**
+ * iterate through datasource and return treenode
+ */
 function iter(node, treenodeClick) {
   return (<Treenode data={node} onTreenodeClick={treenodeClick}>
     {node.children.map(function (val) {

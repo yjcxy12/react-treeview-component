@@ -1,3 +1,6 @@
+/**
+ * Wrapper for the component that compatible with amd, commonjs and as global object
+ */
 (function (root, factory) {
   if(typeof define === "function" && define.amd) {
     define(function () {

@@ -1,3 +1,7 @@
+/**
+ * Sample Data
+ * @type {Array}
+ */
 var dataSource = [{
   "id": "1",
   "text": "myNode",
@@ -42,6 +46,12 @@ var dataSource = [{
 
 var Sample = React.createClass({
 
+  /**
+   * Callback function for treenode click event
+   * @param  {String} node id
+   * @param  {Object} Event object
+   * @return {None}
+   */
   handleTreenodeClick: function (node_id, event) {
     this.refs.treeview.dfs(function (node) {
       if (node.id === node_id) {
@@ -57,6 +67,10 @@ var Sample = React.createClass({
     this.forceUpdate();
   },
 
+  /**
+   * Callback function for 'Change Name' button click event
+   * @return {None}
+   */
   handleButtonClick: function () {
     this.refs.treeview.bfs(function (node) {
       if (node.selected) {
