@@ -1,0 +1,18 @@
+{
+  "extends": "airbnb",
+  "rules": {
+    // disallow trailing commas in object literals
+    "comma-dangle": [2, "never"],
+    // this option sets a specific tab width for your code
+    "indent": [2, 2, {"SwitchCase": 1}],
+    // disallow use of unary operators, ++ and --
+    "no-plusplus": [2, {"allowForLoopAfterthoughts": true}],
+    // disallow to use this/super before super() calling in constructors.
+    "no-this-before-super": 2,
+    // suggest using of const declaration for variables that are never modified after declared
+    "prefer-const": 1,
+    // validate closing bracket location in JSX
+    'react/jsx-closing-bracket-location': 0,
+  }
+}
+    

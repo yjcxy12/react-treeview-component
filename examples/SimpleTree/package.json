@@ -1,17 +1,8 @@
 {
-  "name": "react-treeview-component",
-  "version": "0.1.1",
-  "description": "React Tree Component",
-  "main": "./lib/index.js",
+  "name": "react-treeview-component-simpletree-example",
+  "version": "0.1.0",
+  "description": "",
   "author": "Xiangyun Chi <yjcxy12@gmail.com> (https://github.com/yjcxy12)",
-  "keywords": [
-    "react",
-    "treeview",
-    "tree",
-    "view",
-    "treenode",
-    "react-component"
-  ],
   "license": "MIT",
   "devDependencies": {
     "babel-core": "^6.3.17",
@@ -30,9 +21,7 @@
   },
   "scripts": {
     "lint": "eslint .",
-    "build:lib": "babel src --out-dir lib",
-    "build:umd": "webpack src/index.js dist/treeview.js --config webpack.config.development.js",
-    "build:umd:min": "webpack src/index.js dist/treeview.min.js --config webpack.config.production.js"
+    "build": "webpack index.js bundle.js"
   },
   "dependencies": {
     "object-assign": "^4.0.1",
