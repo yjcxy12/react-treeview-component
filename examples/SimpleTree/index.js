@@ -1,33 +1,13 @@
 import React from 'react';
 import { render } from 'react-dom';
-import { Treeview } from '../../lib';
+import { Provider } from 'react-redux';
+import { createStore } from 'redux';
+import rootReducer from './reducers';
+import App from './containers/App';
 
-const model = [
-  {
-    id: 1,
-    text: 'node1',
-    icon: 'icon',
-    initialState: { opened: false }
-  },
-  {
-    id: 2,
-    text: 'node2',
-    icon: 'icon',
-    initialState: { opened: false },
-    children: [
-      {
-        id: 4,
-        text: 'node4',
-        initialState: { opened: false }
-      }
-    ]
-  },
-  {
-    id: 3,
-    text: 'node3',
-    icon: 'icon',
-    initialState: { opened: true }
-  }
-];
+const store = createStore(rootReducer);
 
-render(<Treeview initialModel={ model }/>, document.getElementById('tree'));
+render(
+  <Provider store={ store }>
+    <App />
+  </Provider>, document.getElementById('tree'));

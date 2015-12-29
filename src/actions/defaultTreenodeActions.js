@@ -1,12 +1,6 @@
-import assign from 'object-assign';
-
-export function defaultHandleArrowClick(model, instance) {
+export function defaultHandleArrowClick(instance) {
   instance.setState({
-    model: assign({}, instance.state.model,
-      assign({}, model, {
-        initialState: { opened: !model.initialState.opened }
-      })
-    )
+    opened: !instance.state.opened
   });
 }
 

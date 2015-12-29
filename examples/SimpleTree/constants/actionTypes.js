@@ -1,0 +1,1 @@
+export const CHANGE_NODE_NAME = 'CHANGE_NODE_NAME';

@@ -2,54 +2,97 @@ import React, { Component, PropTypes } from 'react';
 import TreenodeArrow from './TreenodeArrow';
 import TreenodeIcon from './TreenodeIcon';
 import TreenodeText from './TreenodeText';
+import {
+  defaultHandleArrowClick,
+  defaultHandleIconClick,
+  defaultHandleTextClick
+} from '../actions/defaultTreenodeActions';
 
 class Treenode extends Component {
+  constructor(props) {
+    super(props);
+    this.state = props.nodeModel.initialState;
+  }
+
   render() {
     const {
+      id,
       model,
+      childrenNodes,
+      nodeModel,
       handleArrowClick,
       handleIconClick,
       handleTextClick
     } = this.props;
+    const finalHandleArrowClick = () => {
+      if (handleArrowClick) {
+        handleArrowClick(id, nodeModel);
+      }
+      defaultHandleArrowClick(this);
+    };
+    const finalHandleIconClick = () => {
+      if (handleIconClick) {
+        handleIconClick(id, nodeModel);
+      }
+      defaultHandleIconClick(this);
+    };
+    const finalHandleTextClick = () => {
+      if (handleTextClick) {
+        handleTextClick(id, nodeModel);
+      }
+      defaultHandleTextClick(this);
+    };
 
-    const childElements = model.children && model.children.length > 0 ?
-      model.children.map((child) => {
+    const childElements = childrenNodes.length > 0 ?
+      childrenNodes.map((child) => {
         return (
           <Treenode
-            model={ child }
-            handleArrowClick={ handleArrowClick.bind(this, model) }
-            handleIconClick={ handleIconClick.bind(this, model) }
-            handleTextClick={ handleTextClick.bind(this, model) } />
+            id={ child.id }
+            key={ child.id }
+            model={ model }
+            childrenNodes={ child.children }
+            nodeModel={ model[child.id] }
+            handleArrowClick={ handleArrowClick }
+            handleIconClick={ handleIconClick }
+            handleTextClick={ handleTextClick } />
         );
       }) : null;
 
     return (
-      <div>
+      <div className="treenode-node">
         <TreenodeArrow
-          opened={ model.initialState.opened }
-          handleArrowClick={ handleArrowClick.bind(this, model) } />
+          opened={ this.state.opened }
+          hasChild={ childrenNodes.length > 0 }
+          handleArrowClick={ finalHandleArrowClick.bind(this) } />
         <TreenodeIcon
-          icon={ model.icon }
-          handleIconClick={ handleIconClick.bind(this, model) } />
+          icon={ nodeModel.icon }
+          handleIconClick={ finalHandleIconClick.bind(this) } />
         <TreenodeText
-          text={ model.text }
-          handleTextClick={ handleTextClick.bind(this, model) } />
-        { childElements }
+          text={ nodeModel.text }
+          handleTextClick={ finalHandleTextClick.bind(this) } />
+        <div className={ this.state.opened ? 'show' : 'hidden' }>
+          { childElements }
+        </div>
       </div>
     );
   }
 }
 
 Treenode.propTypes = {
-  model: PropTypes.shape({
-    id: PropTypes.string.isRequired,
+  id: PropTypes.oneOfType([
+    PropTypes.string,
+    PropTypes.number
+  ]).isRequired,
+  model: PropTypes.object.isRequired,
+  childrenNodes: PropTypes.array.isRequired,
+  nodeModel: PropTypes.shape({
     text: PropTypes.string.isRequired,
     icon: PropTypes.string,
     initialState: PropTypes.shape({
       opened: PropTypes.bool.isRequired
     }),
     children: PropTypes.oneOfType([PropTypes.array, null])
-  }),
+  }).isRequired,
   handleArrowClick: PropTypes.func,
   handleIconClick: PropTypes.func,
   handleTextClick: PropTypes.func
