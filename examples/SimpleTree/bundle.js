@@ -10860,27 +10860,7 @@
 	module.exports = exports["default"];
 
 /***/ },
-/* 95 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-	
-	Object.defineProperty(exports, "__esModule", {
-	  value: true
-	});
-	exports.changeNodeName = changeNodeName;
-	
-	var _actionTypes = __webpack_require__(54);
-	
-	function changeNodeName(id, text) {
-	  return {
-	    type: _actionTypes.CHANGE_NODE_NAME,
-	    id: id,
-	    text: text
-	  };
-	}
-
-/***/ },
+/* 95 */,
 /* 96 */
 /***/ function(module, exports, __webpack_require__) {
 
@@ -10899,8 +10879,6 @@
 	var _reactRedux = __webpack_require__(61);
 	
 	var _lib = __webpack_require__(269);
-	
-	var _actions = __webpack_require__(95);
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	

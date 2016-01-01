@@ -18,8 +18,8 @@ function _convertModel(nodeModel, returnModel, structure) {
 }
 
 export function convertTreeviewModel(initialModel) {
-  let returnModel = {};
-  let structure = {
+  const returnModel = {};
+  const structure = {
     id: '#',
     children: []
   };

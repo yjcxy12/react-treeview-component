@@ -1,7 +1,6 @@
 import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
 import { Treeview } from '../../../lib';
-import { changeNodeName } from '../actions';
 
 class App extends Component {
 

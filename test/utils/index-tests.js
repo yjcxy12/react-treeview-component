@@ -1,8 +1,8 @@
 import { expect } from 'chai';
-import { generateState } from '../../src/utils';
+import { convertTreeviewModel } from '../../src/utils';
 
 describe('utils/index', () => {
-  describe('#generateState()', () => {
+  describe('#convertTreeviewModel()', () => {
     it('should generate correct model and structure with one level tree model', () => {
       const model = [
         {
@@ -24,7 +24,7 @@ describe('utils/index', () => {
           initialState: { opened: true }
         }
       ];
-      expect(generateState(model)).to.eql({
+      expect(convertTreeviewModel(model)).to.eql({
         model: {
           1: {
             text: 'node1',
@@ -39,6 +39,11 @@ describe('utils/index', () => {
           3: {
             text: 'node3',
             icon: 'icon',
+            initialState: { opened: true }
+          },
+          '#': {
+            text: '',
+            icon: '',
             initialState: { opened: true }
           }
         },
@@ -82,7 +87,7 @@ describe('utils/index', () => {
           initialState: { opened: true }
         }
       ];
-      expect(generateState(model)).to.eql({
+      expect(convertTreeviewModel(model)).to.eql({
         model: {
           1: {
             text: 'node1',
@@ -102,6 +107,11 @@ describe('utils/index', () => {
           3: {
             text: 'node3',
             icon: 'icon',
+            initialState: { opened: true }
+          },
+          '#': {
+            text: '',
+            icon: '',
             initialState: { opened: true }
           }
         },
@@ -197,7 +207,7 @@ describe('utils/index', () => {
           ]
         }
       ];
-      expect(generateState(model)).to.eql({
+      expect(convertTreeviewModel(model)).to.eql({
         model: {
           1: {
             text: 'node1',
@@ -252,6 +262,11 @@ describe('utils/index', () => {
           10: {
             text: 'node10',
             icon: 'icon',
+            initialState: { opened: true }
+          },
+          '#': {
+            text: '',
+            icon: '',
             initialState: { opened: true }
           }
         },
