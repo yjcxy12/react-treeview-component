@@ -1,9 +1,9 @@
 import assign from 'object-assign';
 import treeModel from '../model/hugeTree';
-import { generateState } from '../../../lib';
+import { convertTreeviewModel } from '../../../lib';
 import { CHANGE_NODE_NAME } from '../constants/actionTypes';
 
-const initialState = generateState(treeModel);
+const initialState = convertTreeviewModel(treeModel);
 
 export default function treeviewModel(state = initialState, action) {
   switch (action.type) {

@@ -3,7 +3,8 @@
 module.exports = {
   module: {
     loaders: [
-      { test: /\.js$/, loaders: ['babel-loader'], exclude: /node_modules/ }
+      { test: /\.js$/, loaders: ['babel-loader'], exclude: /node_modules/ },
+      { test: /\.scss$/, loaders: ['style', 'css', 'sass'], exclude: /node_modules/ }
     ]
   },
   output: {

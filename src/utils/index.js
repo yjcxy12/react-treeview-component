@@ -1,4 +1,4 @@
-function _generateState(nodeModel, returnModel, structure) {
+function _convertModel(nodeModel, returnModel, structure) {
   returnModel[nodeModel.id] = {
     text: nodeModel.text,
     icon: nodeModel.icon,
@@ -12,12 +12,12 @@ function _generateState(nodeModel, returnModel, structure) {
 
   if (nodeModel.children && nodeModel.children.length > 0) {
     nodeModel.children.forEach((childModel) => {
-      _generateState(childModel, returnModel, structure.children[structure.children.length - 1]);
+      _convertModel(childModel, returnModel, structure.children[structure.children.length - 1]);
     });
   }
 }
 
-export function generateState(initialModel) {
+export function convertTreeviewModel(initialModel) {
   let returnModel = {};
   let structure = {
     id: '#',
@@ -29,7 +29,7 @@ export function generateState(initialModel) {
     initialState: { opened: true }
   };
   initialModel.forEach((nodeModel) => {
-    _generateState(nodeModel, returnModel, structure);
+    _convertModel(nodeModel, returnModel, structure);
   });
 
   return {

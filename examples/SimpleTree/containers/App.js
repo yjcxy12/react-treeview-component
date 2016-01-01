@@ -4,9 +4,6 @@ import { Treeview } from '../../../lib';
 import { changeNodeName } from '../actions';
 
 class App extends Component {
-  handleTextClick(id, treenode) {
-    this.props.dispatch(changeNodeName(id, treenode.text + ' changed'));
-  }
 
   render() {
     const { model, structure } = this.props;
@@ -15,8 +12,7 @@ class App extends Component {
       <div>
         <Treeview
           model={ model }
-          structure={ structure }
-          handleTextClick={ this.handleTextClick.bind(this) } />
+          structure={ structure } />
       </div>
     );
   }

@@ -1,7 +1,8 @@
 import Treeview from './components/Treeview';
-import { generateState } from './utils';
+import { convertTreeviewModel } from './utils';
+// import './assets/styles/treenode.scss';
 
 export {
   Treeview,
-  generateState
+  convertTreeviewModel
 };

@@ -1,6 +1,6 @@
 # React tree component
 
-Tree component for react
+Treeview component for react
 
 [Demo](http://yjcxy12.github.io/react-treeview-component/) (Also check out the `src/example/` folder for usage).
 
@@ -10,17 +10,21 @@ Tree component for react
 npm install react-treeview-component
 ```
 
-Include js file at "react-treeview-component/build/react-tree.js" <br/>
-Include css file at "react-treeview-component/build/react-tree.css"
-
 ## Usage
 
-Added to your react component
-```html
-<Treeview dataSource={this.props.dataSource}
-  onTreenodeClick={this.handleTreenodeClick}>
-</Treeview>
+The library assumes commonJS or ES6 modules implementation.
+Require or import 'Treeview' component
+```javascript
+var Treeview = require('react-treeview-component').Treeview;
 ```
+Or
+```javascript
+import { Treeview } from 'react-treeview-component';
+```
+
+### Usage with redux
+
+This library is designed to fit in with redux structure. 
 
 ## API
 

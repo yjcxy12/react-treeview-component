@@ -2,26 +2,37 @@ import React, { Component, PropTypes } from 'react';
 import Treenode from './Treenode.js';
 
 class Treeview extends Component {
-  render() {
+  createElement(structure) {
     const {
       model,
-      structure,
       handleArrowClick,
       handleIconClick,
       handleTextClick
     } = this.props;
+    const childElements = structure.children.length > 0 ?
+      structure.children.map((child) => {
+        return this.createElement(child);
+      }) : null;
+    return (
+      <Treenode
+        id={ structure.id }
+        key={ structure.id }
+        hasChild={ structure.children.length > 0 }
+        initialNodeModel={ model[structure.id] }
+        handleArrowClick={ handleArrowClick }
+        handleTextClick={ handleTextClick }
+        handleIconClick={ handleIconClick } >
+        { childElements }
+      </Treenode>
+    );
+  }
+
+  render() {
+    const { structure } = this.props;
 
     return (
       <div>
-        <Treenode
-          id={ structure.id }
-          key={ structure.id }
-          model={ model }
-          childrenNodes={ structure.children }
-          nodeModel={ model[structure.id] }
-          handleArrowClick={ handleArrowClick }
-          handleTextClick={ handleTextClick }
-          handleIconClick={ handleIconClick } />
+        { this.createElement.call(this, structure) }
       </div>
     );
   }
