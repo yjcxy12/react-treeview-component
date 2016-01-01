@@ -1,5 +1,5 @@
 import assign from 'object-assign';
-import treeModel from '../model/hugeTree';
+import treeModel from '../model/hugetree';
 import { convertTreeviewModel } from '../../../lib';
 import { CHANGE_NODE_NAME } from '../constants/actionTypes';
 

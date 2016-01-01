@@ -10933,32 +10933,7 @@
 	exports.default = (0, _reactRedux.connect)(select)(App);
 
 /***/ },
-/* 97 */
-/***/ function(module, exports) {
-
-	'use strict';
-	
-	Object.defineProperty(exports, "__esModule", {
-	  value: true
-	});
-	var model = [{
-	  id: -1,
-	  text: 'parent',
-	  icon: 'fa fa-folder',
-	  initialState: { opened: true },
-	  children: Array.apply(null, Array(7000)).map(function (ele, index) {
-	    return {
-	      id: index,
-	      text: 'child_' + index,
-	      icon: 'fa fa-leaf',
-	      initialState: { opened: false }
-	    };
-	  })
-	}];
-	
-	exports.default = model;
-
-/***/ },
+/* 97 */,
 /* 98 */
 /***/ function(module, exports, __webpack_require__) {
 
@@ -10997,9 +10972,9 @@
 	
 	var _objectAssign2 = _interopRequireDefault(_objectAssign);
 	
-	var _hugeTree = __webpack_require__(97);
+	var _hugetree = __webpack_require__(354);
 	
-	var _hugeTree2 = _interopRequireDefault(_hugeTree);
+	var _hugetree2 = _interopRequireDefault(_hugetree);
 	
 	var _lib = __webpack_require__(269);
 	
@@ -11009,7 +10984,7 @@
 	
 	function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 	
-	var initialState = (0, _lib.convertTreeviewModel)(_hugeTree2.default);
+	var initialState = (0, _lib.convertTreeviewModel)(_hugetree2.default);
 	
 	function treeviewModel() {
 	  var state = arguments.length <= 0 || arguments[0] === undefined ? initialState : arguments[0];
@@ -41285,6 +41260,33 @@
 		return to;
 	};
 
+
+/***/ },
+/* 353 */,
+/* 354 */
+/***/ function(module, exports) {
+
+	'use strict';
+	
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	var model = [{
+	  id: -1,
+	  text: 'parent',
+	  icon: 'fa fa-folder',
+	  initialState: { opened: true },
+	  children: Array.apply(null, Array(7000)).map(function (ele, index) {
+	    return {
+	      id: index,
+	      text: 'child_' + index,
+	      icon: 'fa fa-leaf',
+	      initialState: { opened: false }
+	    };
+	  })
+	}];
+	
+	exports.default = model;
 
 /***/ }
 /******/ ]);
